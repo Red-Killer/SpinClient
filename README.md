@@ -36,7 +36,6 @@ import SpinClient from 'spinclient';
 const client = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
 
 // Example: Initializing a game session in demo mode
-
 const demo = await client.getGameDemo("softswiss/DiceBonanza", "USD", "en");
 ```
 

@@ -31,5 +31,13 @@
     "@types/node": "^22.5.3",
     "microbundle": "^0.15.1",
     "ts-node": "^10.9.2"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Red-Killer/SpinClient.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Red-Killer/SpinClient/issues"
+  },
+  "homepage": "https://github.com/Red-Killer/SpinClient#readme"
 }
