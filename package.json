@@ -27,7 +27,7 @@
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.7",
-    "@types/node": "^22.5.3",
+    "@types/node": "^22.5.4",
     "microbundle": "^0.15.1",
     "ts-node": "^10.9.2"
   },
