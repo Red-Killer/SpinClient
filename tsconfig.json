@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "src",
+    "removeComments": true,
+    "typeRoots": ["node_modules/@types", "src/types"],
+    "paths": {
+      "@/*": ["./src/*"]
+    }
+  },
+  "ts-node": {
+    "files": true
+  },
+  "include": ["src/**/*.ts"],
+  "extends": "@tsconfig/recommended/tsconfig.json"
+}

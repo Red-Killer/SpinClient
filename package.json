@@ -1,0 +1,35 @@
+{
+  "name": "spinclient",
+  "version": "1.0.0",
+  "description": "To assist easier integration with operators who are using JavaScript/TypeScript",
+  "keywords": [
+    "spinshield",
+    "spinclient",
+    "spin",
+    "sdk"
+  ],
+  "author": "spinshield",
+  "license": "UNLICENSED",
+  "type": "module",
+  "main": "./dist/bundle.cjs",
+  "source": "src/index.ts",
+  "exports": {
+    "require": "./dist/bundle.cjs",
+    "default": "./dist/bundle.modern.js"
+  },
+  "module": "./dist/bundle.module.js",
+  "unpkg": "./dist/module.umd.js",
+  "scripts": {
+    "build": "microbundle --tsconfig tsconfig.json --target node --no-sourceMap",
+    "dev": "microbundle watch --tsconfig tsconfig.json --target node --no-sourceMap"
+  },
+  "dependencies": {
+    "zod": "^3.23.8"
+  },
+  "devDependencies": {
+    "@tsconfig/recommended": "^1.0.7",
+    "@types/node": "^22.5.3",
+    "microbundle": "^0.15.1",
+    "ts-node": "^10.9.2"
+  }
+}
