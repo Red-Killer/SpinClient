@@ -1,5 +1,5 @@
+
 import { createHash } from "crypto";
-import { Requests } from "./types";
 import type {
   Request,
   Language,
@@ -12,7 +12,7 @@ import type {
   GameListType2WithSystemResponse,
   FreeRoundsResponse,
   GameResponse,
-} from "./types";
+} from "./types/index";
 
 const hashString = (str: string) =>
   createHash("sha256").update(str).digest("hex");
@@ -56,7 +56,6 @@ class SpinClient {
   }
 
   protected async request<T>(data: Request) {
-    const schema = Requests.parse(data);
     const res = await fetch(this.baseurl, {
       method: "POST",
       headers: {
@@ -65,7 +64,7 @@ class SpinClient {
       body: JSON.stringify({
         api_login: this.api_login,
         api_password: this.api_password,
-        ...schema,
+        ...data,
       }),
     });
 

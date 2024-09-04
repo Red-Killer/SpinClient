@@ -11,20 +11,19 @@
   "author": "spinshield",
   "license": "MIT",
   "type": "module",
-  "main": "./dist/bundle.cjs",
   "source": "src/index.ts",
+  "main": "dist/index.cjs",
   "exports": {
-    "require": "./dist/bundle.cjs",
-    "default": "./dist/bundle.modern.js"
+    "types": "./dist/index.d.ts",
+    "require": "./dist/index.cjs",
+    "default": "./dist/index.modern.js"
   },
-  "module": "./dist/bundle.module.js",
-  "unpkg": "./dist/module.umd.js",
+  "types": "dist/index.d.ts",
+  "module": "dist/index.module.js",
+  "unpkg": "dist/index.umd.js",
   "scripts": {
     "build": "microbundle --tsconfig tsconfig.json --target node --no-sourceMap",
     "dev": "microbundle watch --tsconfig tsconfig.json --target node --no-sourceMap"
-  },
-  "dependencies": {
-    "zod": "^3.23.8"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.7",

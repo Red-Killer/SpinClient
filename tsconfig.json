@@ -3,10 +3,7 @@
     "outDir": "./dist",
     "rootDir": "src",
     "removeComments": true,
-    "typeRoots": ["node_modules/@types", "src/types"],
-    "paths": {
-      "@/*": ["./src/*"]
-    }
+    "typeRoots": ["node_modules/@types", "src/types/"],
   },
   "ts-node": {
     "files": true
