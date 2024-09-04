@@ -1,6 +1,6 @@
 {
   "name": "spinclient",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "To assist easier integration with operators who are using JavaScript/TypeScript",
   "keywords": [
     "spinshield",
@@ -22,8 +22,8 @@
   "module": "dist/index.module.js",
   "unpkg": "dist/index.umd.js",
   "scripts": {
-    "build": "microbundle --tsconfig tsconfig.json --target node --no-sourcemap",
-    "dev": "microbundle watch --tsconfig tsconfig.json --target node --no-sourcemap"
+    "build": "microbundle --tsconfig tsconfig.json --target node",
+    "dev": "microbundle watch --tsconfig tsconfig.json --target node"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.7",
