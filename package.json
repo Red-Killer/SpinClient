@@ -22,8 +22,8 @@
   "module": "dist/index.module.js",
   "unpkg": "dist/index.umd.js",
   "scripts": {
-    "build": "microbundle --tsconfig tsconfig.json --target node --no-sourceMap",
-    "dev": "microbundle watch --tsconfig tsconfig.json --target node --no-sourceMap"
+    "build": "microbundle --tsconfig tsconfig.json --target node --no-sourcemap",
+    "dev": "microbundle watch --tsconfig tsconfig.json --target node --no-sourcemap"
   },
   "devDependencies": {
     "@tsconfig/recommended": "^1.0.7",
