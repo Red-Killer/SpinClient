@@ -3,15 +3,6 @@ import { createHash } from "crypto";
 const hashString = (str: string) =>
   createHash("sha256").update(str).digest("hex");
 
-/**
- * SpinClient SDK
- * @example
- * ```ts
- * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
- * const player = await sdk.createPlayer("example", "password", "USD");
- * console.log(player);
- * ```
- */
 class SpinClient {
   private api_login: string;
   private api_password: string;
@@ -67,6 +58,15 @@ class SpinClient {
    * @param username - The username of the player
    * @param password - The password of the player
    * @param currency - {@link [Supported currencies](https://documentation.spin.ac/#supported-game-currencies)}
+   *
+   * @example Creating a player with username "example" and password "password" in USD currency
+   * ```ts
+   * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
+   *
+   * const player = await sdk.createPlayer("example", "password", "USD");
+   *
+   * console.log(player);
+   * ```
    */
   async createPlayer(username: string, password: string, currency: string) {
     return this.request<CreatePlayerResponse>({
@@ -83,10 +83,12 @@ class SpinClient {
    * @param currency - {@link [Supported currencies](https://documentation.spin.ac/#supported-game-currencies)}
    *
    * @deprecated Use {@link SpinClient.playerExists} instead
-   * @example
+   * @example Getting an existing player object for a player with username "example" in USD currency
    * ```ts
    * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
+   *
    * const player = await sdk.playerExists("example", "USD");
+   *
    * console.log(player);
    * ```
    */
@@ -100,10 +102,18 @@ class SpinClient {
 
   /**
    * Get a list of games
-   * @param show_systems - Show systems
+   * @param show_systems - Show systems (0 or 1)
    * @param currency - {@link [Supported currencies](https://documentation.spin.ac/#supported-game-currencies)}
-   * @param list_type - If you prioritize performance, choose type 2
-   * @param show_additionals - Show additional data
+   * @param list_type - If you prioritize performance, choose type 2 (1 or 2)
+   * @param show_additionals - Show additional data (true or false)
+   * 
+   * @example Getting a list of games without systems in USD currency
+   * ```ts
+   * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
+   * 
+   * const games = await sdk.getGameList(0, "USD");
+   * 
+   * console.log(games);
    */
   //function overloads
   async getGameList(
@@ -163,7 +173,9 @@ class SpinClient {
    * @example Initializing a game session for a player with username "example" and password "password" in USD currency for a game with id "softswiss/DiceBonanza"
    * ```ts
    * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
+   *
    * const game = await sdk.getGame("example", "password", "USD", "softswiss/DiceBonanza", "https://url.to.your.page.com", "https://url.to.cashier.page.com", 0, "en");
+   *
    * console.log(game);
    * ```
    */
@@ -197,7 +209,9 @@ class SpinClient {
    * @example Initializing a game session in demo mode for a game with id "softswiss/DiceBonanza" in USD currency
    * ```ts
    * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
+   *
    * const game = await sdk.getGameDemo("softswiss/DiceBonanza", "USD", "en");
+   *
    * console.log(game);
    * ```
    */
@@ -221,7 +235,8 @@ class SpinClient {
    * @example Getting aviailable free rounds for a player with username "example" and password "password" in USD currency
    * ```ts
    * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
-   * const freeRounds = await sdk.getFreeRounds("example", "password", "USD");
+   *
+   *  const freeRounds = await sdk.getFreeRounds("example", "password", "USD");
    *
    * console.log(freeRounds);
    * ```
@@ -248,7 +263,9 @@ class SpinClient {
    * @example Adding free rounds for a player with username "example" and password "password" in USD currency for a game with id "softswiss/LuckyCrew"
    * ```ts
    * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
+   *
    * const resp = await sdk.addFreeRounds("example", "password", "USD", "softswiss/LuckyCrew", 12, 0, 7);
+   *
    * console.log(resp);
    * ```
    */
@@ -283,6 +300,7 @@ class SpinClient {
    * @example Deleting free rounds for a player with username "example" and password "password" in USD currency for a game with id "softswiss/LuckyCrew"
    * ```ts
    * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
+   *
    * await sdk.deleteFreeRounds("example", "password", "USD", "softswiss/LuckyCrew");
    * ```
    */
@@ -310,6 +328,7 @@ class SpinClient {
    * @example Deleting all free rounds for a player with username "example" and password "password" in USD currency
    * ```ts
    * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
+   *
    * await sdk.deleteAllFreeRounds("example", "password", "USD");
    * ```
    */
@@ -325,9 +344,32 @@ class SpinClient {
       currency,
     });
   }
+
+  /**
+   * Validates a webhook
+   * @param key - The key from the payload
+   * @param timestamp - The timestamp from the payload
+   * @param salt - Your webhook secret
+   *
+   * @returns true if the webhook is valid, false otherwise
+   * @example Validating a webhook
+   * ```ts
+   * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
+   *
+   * const isValid = sdk.validateWebhook("4e54de0b17adf322365c0540bd7db57a", "1696463565", "salt");
+   *
+   * console.log(isValid);
+   * ```
+   */
+  validateWebhook(key: string, timestamp: string, salt: string) {
+    return (
+      createHash("md5")
+        .update(timestamp + salt)
+        .digest("hex") === key
+    );
+  }
 }
 
-// type definitions
 type Language = "en" | "fr" | "de" | "tr" | "ru" | "nl" | "pt" | "es";
 
 interface BaseUser {
