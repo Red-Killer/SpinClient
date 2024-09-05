@@ -254,7 +254,7 @@ class SpinClient {
    * Add free rounds to a player
    * @param username - The username of the player
    * @param password - The password of the player
-   * @param currency - Supported currencies
+   * @param currency - {@link [Supported currencies](https://documentation.spin.ac/#supported-game-currencies)}
    * @param gameid - The game id
    * @param freespins - The number of free spins
    * @param bet_level - Bet level (0 to 6)
