@@ -224,7 +224,7 @@ class SpinClient {
       lang,
       homeurl: this.homeurl,
       cashierurl: this.cashierurl,
-    }).then((res) => ({ response: res.response, session_id: res.session_id }));
+    }).then((res) => res.response);
   }
 
   /**
