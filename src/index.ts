@@ -2,29 +2,30 @@ import { createHash } from "crypto";
 
 const hashString = (str: string) =>
   createHash("sha256").update(str).digest("hex");
-  /**
-   * Error class for SpinClient
-   * @extends Error
-   * @param message - The error message
-   * @param code - The error code
-   *
-   * @example Handling errors thrown by the SDK
-   * ```ts
-   * import SpinClient, { SpinError } from "spinclient";
-   *
-   * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
-   *
-   * try {
-   *    await sdk.deleteAllFreeRounds("example", "password", "USD");
-   * } catch (e) {
-   *    if (e instanceof SpinError) {
-   *        console.error(`Catched a SpinError with code ${e.code} and message ${e.message}`);
-   *    } else {
-   *        console.error(`Catched an error with message ${e.message}`);
-   *    }
-   * }
-   * ```
-   */
+
+/**
+ * Error class for SpinClient
+ * @extends Error
+ * @param message - The error message
+ * @param code - The error code
+ *
+ * @example Handling errors thrown by the SDK
+ * ```ts
+ * import { SpinClient, SpinError } from "spinclient";
+ *
+ * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
+ *
+ * try {
+ *    await sdk.deleteAllFreeRounds("example", "password", "USD");
+ * } catch (e) {
+ *    if (e instanceof SpinError) {
+ *        console.error(`Catched a SpinError with code ${e.code} and message ${e.message}`);
+ *    } else {
+ *        console.error(`Catched an error with message ${e.message}`);
+ *    }
+ * }
+ * ```
+ */
 class SpinError extends Error {
   constructor(message: string, public code: number) {
     super(message);
@@ -610,5 +611,4 @@ export type {
   FreeRoundsResponse,
 };
 
-export default SpinClient;
-export { SpinError };
+export { SpinClient, SpinError };
