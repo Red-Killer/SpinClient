@@ -114,6 +114,7 @@ class SpinClient {
    * const games = await sdk.getGameList(0, "USD");
    *
    * console.log(games);
+   * ```
    */
   //function overloads
   async getGameList(
