@@ -8,7 +8,7 @@ SpinClient is a JavaScript SDK designed to facilitate easier integration with th
   - [Usage](#usage)
   - [Methods](#methods)
     - [createPlayer](#createplayer)
-    - [playerExists](#playerexists)
+    - [~~playerExist~~ (deprecated)](#playerexist-deprecated)
     - [getGameList](#getgamelist)
     - [getGame](#getgame)
     - [getGameDemo](#getgamedemo)
@@ -58,7 +58,7 @@ The following methods are available on the `SpinClient` class:
 createPlayer(username: string, password: string, currency: string)
 ```
 
-### playerExists
+### ~~playerExist~~ (deprecated)
 ```typescript
 playerExists(username: string, currency: string)
 ```
