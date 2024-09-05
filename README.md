@@ -8,7 +8,7 @@ SpinClient is a JavaScript SDK designed to facilitate easier integration with th
   - [Usage](#usage)
   - [Methods](#methods)
     - [createPlayer](#createplayer)
-    - [~~playerExists~~ (deprecated)](#playerExists-deprecated)
+    - [~~playerExists~~ (deprecated)](#playerexists-deprecated)
     - [getGameList](#getgamelist)
     - [getGame](#getgame)
     - [getGameDemo](#getgamedemo)
@@ -18,6 +18,7 @@ SpinClient is a JavaScript SDK designed to facilitate easier integration with th
     - [deleteAllFreeRounds](#deleteallfreerounds)
   - [Helper Functions](#helper-functions)
     - [validateWebhook](#validatewebhook)
+  - [Error Handling](#error-handling)
   - [Contributing](#contributing)
   - [License](#license)
 
@@ -127,7 +128,6 @@ deleteAllFreeRounds(
 )
 ```
 
-<!-- helper functions for eg webhook validation, etc. -->
 ## Helper Functions
 The following helper functions are available on the `SpinClient` class:
 ### validateWebhook
@@ -139,6 +139,25 @@ validateWebhook(
 )
 ```
 
+## Error Handling
+
+To handle errors in the `SpinClient` SDK, you can use the `SpinError` class. Here is an example:
+
+```typescript
+import SpinClient, { SpinError } from "spinclient";
+
+const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
+
+try {
+   await sdk.deleteAllFreeRounds("example", "password", "USD");
+} catch (e) {
+   if (e instanceof SpinError) {
+       console.error(`Caught a SpinError with code ${e.code} and message ${e.message}`);
+   } else {
+       console.error(`Caught an error with message ${e.message}`);
+   }
+}
+```
 
 ## Contributing
 If you find any issues or have suggestions for improvements, please feel free to open an issue or submit a pull request.

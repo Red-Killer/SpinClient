@@ -2,6 +2,35 @@ import { createHash } from "crypto";
 
 const hashString = (str: string) =>
   createHash("sha256").update(str).digest("hex");
+  /**
+   * Error class for SpinClient
+   * @extends Error
+   * @param message - The error message
+   * @param code - The error code
+   *
+   * @example Handling errors thrown by the SDK
+   * ```ts
+   * import SpinClient, { SpinError } from "spinclient";
+   *
+   * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
+   *
+   * try {
+   *    await sdk.deleteAllFreeRounds("example", "password", "USD");
+   * } catch (e) {
+   *    if (e instanceof SpinError) {
+   *        console.error(`Catched a SpinError with code ${e.code} and message ${e.message}`);
+   *    } else {
+   *        console.error(`Catched an error with message ${e.message}`);
+   *    }
+   * }
+   * ```
+   */
+class SpinError extends Error {
+  constructor(message: string, public code: number) {
+    super(message);
+    this.name = "SpinError";
+  }
+}
 
 class SpinClient {
   private api_login: string;
@@ -47,8 +76,8 @@ class SpinClient {
 
     const data_ = (await res.json()) as T & BaseResponse;
 
-    // if error not 0 throw error
-    if (data_.error !== 0) throw new Error(data_.message);
+    if (data_.error !== 0)
+      throw new SpinError(data_.message ?? "Unknown error", data_.error);
 
     return data_;
   }
@@ -582,3 +611,4 @@ export type {
 };
 
 export default SpinClient;
+export { SpinError };
