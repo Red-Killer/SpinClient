@@ -276,7 +276,7 @@ class SpinClient {
     currency: string,
     gameid: string,
     freespins: number,
-    bet_level: number,
+    bet_level: BetLevel,
     valid_days: number
   ) {
     return this.request<AddFreeRoundsResponse>({
@@ -372,6 +372,7 @@ class SpinClient {
 }
 
 type Language = "en" | "fr" | "de" | "tr" | "ru" | "nl" | "pt" | "es";
+type BetLevel = 0 | 1 | 2 | 3 | 4 | 5 | 6;
 
 interface BaseUser {
   user_username: string;
@@ -383,7 +384,7 @@ interface addFreeRoundsRequest extends BaseUser {
   method: "addFreeRounds";
   gameid: string;
   freespins: number;
-  bet_level: number;
+  bet_level: BetLevel;
   valid_days: number;
 }
 
@@ -448,7 +449,7 @@ interface AddFreeRoundsResponse extends BaseResponse {
     freespins: number;
     freespins_wallet: number;
     freespins_performed: number;
-    bet_level: number;
+    bet_level: BetLevel;
     currency: string;
     operator_id: number;
     valid_until: string;
@@ -540,7 +541,7 @@ interface FreeRoundsResponse extends BaseResponse {
     freespins_bet: number;
     freespins_wallet: number;
     freespins_performed: number;
-    bet_level: number;
+    bet_level: BetLevel;
     extra_data: unknown;
     active: boolean;
     operator_id: number;
