@@ -471,7 +471,7 @@ interface CreatePlayerResponse extends BaseResponse {
 interface GameType1 {
   id: number;
   name: string;
-  type: "video-slot" | "live";
+  type: "video-slots" | "live";
   category: string;
   subcategory: string;
   details: unknown[];
