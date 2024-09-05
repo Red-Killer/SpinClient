@@ -1,5 +1,5 @@
 # SpinClient
-SpinClient is a JavaScript SDK designed to facilitate easier integration with the [spin.ac](https://documentation.spin.ac/) API. This SDK provides a set of tools and types to interact seamlessly with the Spin API, making it easier to integrate spin.ac games into your website.
+SpinClient is a JavaScript SDK designed to facilitate easier integration with the [spin.ac](https://documentation.spin.ac/) API.
 
 ## Table of Contents
 - [SpinClient](#spinclient)
