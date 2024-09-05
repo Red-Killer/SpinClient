@@ -289,7 +289,7 @@ class SpinClient {
       freespins,
       bet_level,
       valid_days,
-    });
+    }).then((res) => res.response);
   }
 
   /**
