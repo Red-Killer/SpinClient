@@ -106,13 +106,13 @@ class SpinClient {
    * @param currency - {@link [Supported currencies](https://documentation.spin.ac/#supported-game-currencies)}
    * @param list_type - If you prioritize performance, choose type 2 (1 or 2)
    * @param show_additionals - Show additional data (true or false)
-   * 
+   *
    * @example Getting a list of games without systems in USD currency
    * ```ts
    * const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
-   * 
+   *
    * const games = await sdk.getGameList(0, "USD");
-   * 
+   *
    * console.log(games);
    */
   //function overloads
@@ -197,7 +197,8 @@ class SpinClient {
       lang,
       homeurl: this.homeurl,
       cashierurl: this.cashierurl,
-    }).then((res) => res.response);
+      // add session id to the return object
+    }).then((res) => ({ response: res.response, session_id: res.session_id }));
   }
 
   /**
@@ -223,7 +224,7 @@ class SpinClient {
       lang,
       homeurl: this.homeurl,
       cashierurl: this.cashierurl,
-    }).then((res) => res.response);
+    }).then((res) => ({ response: res.response, session_id: res.session_id }));
   }
 
   /**
