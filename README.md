@@ -40,7 +40,7 @@ pnpm add spinclient
 To use SpinClient, you need to create an instance of the `SpinClient` class with your API credentials and the base URLs for the API, your website, and the cashier page. You can then use the methods provided by the `SpinClient` class to interact with the Spin API.
 
 ```ts
-import SpinClient from 'spinclient';
+import { SpinClient } from 'spinclient';
 
 const client = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
 
@@ -144,7 +144,7 @@ validateWebhook(
 To handle errors in the `SpinClient` SDK, you can use the `SpinError` class. Here is an example:
 
 ```typescript
-import SpinClient, { SpinError } from "spinclient";
+import { SpinClient, SpinError } from "spinclient";
 
 const sdk = new SpinClient("api_login", "api_password", "https://url.to.api.com", "https://url.to.your.page.com", "https://url.to.cashier.page.com");
 
