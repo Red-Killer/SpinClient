@@ -1,8 +1,5 @@
 import { createHash } from "crypto";
 
-const hashString = (str: string) =>
-  createHash("sha256").update(str).digest("hex");
-
 /**
  * Error class for SpinClient
  * @extends Error
@@ -102,7 +99,7 @@ class SpinClient {
     return this.request<CreatePlayerResponse>({
       method: "createPlayer",
       user_username: username,
-      user_password: hashString(password),
+      user_password: password,
       currency,
     }).then((res) => res.response);
   }
@@ -221,7 +218,7 @@ class SpinClient {
     return this.request<GameResponse>({
       method: "getGame",
       user_username: username,
-      user_password: hashString(password),
+      user_password: password,
       currency,
       gameid,
       play_for_fun,
@@ -277,7 +274,7 @@ class SpinClient {
     return this.request<FreeRoundsResponse>({
       method: "getFreeRounds",
       user_username: username,
-      user_password: hashString(password),
+      user_password: password,
       currency,
     }).then((res) => res.response);
   }
@@ -313,7 +310,7 @@ class SpinClient {
     return this.request<AddFreeRoundsResponse>({
       method: "addFreeRounds",
       user_username: username,
-      user_password: hashString(password),
+      user_password: password,
       currency,
       gameid,
       freespins,
@@ -345,7 +342,7 @@ class SpinClient {
     return this.request({
       method: "deleteFreeRounds",
       user_username: username,
-      user_password: hashString(password),
+      user_password: password,
       currency,
       gameid,
     });
@@ -372,7 +369,7 @@ class SpinClient {
     return this.request({
       method: "deleteAllFreeRounds",
       user_username: username,
-      user_password: hashString(password),
+      user_password: password,
       currency,
     });
   }
